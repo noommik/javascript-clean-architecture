@@ -8,6 +8,9 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
+    path: '/wise-cat',
+    name: 'WiseCat',
+    component: () => import('../views/WiseCat.vue'),
   },
 ];
 
