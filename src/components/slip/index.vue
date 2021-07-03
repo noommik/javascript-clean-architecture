@@ -40,10 +40,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-  .cat {
+  .slip {
+    min-width: 100px;
     max-width: 500px;
-  }
-  .cat img {
-    max-width: 100%;
   }
 </style>

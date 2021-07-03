@@ -41,6 +41,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
   .cat {
+    min-width: 100px;
     max-width: 500px;
   }
   .cat img {
