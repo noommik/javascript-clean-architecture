@@ -25,8 +25,7 @@ export default defineComponent({
       Slip.getSlip()
         .then((response) => {
           if (Object.prototype.hasOwnProperty.call(response.data, 'message')) {
-            console.log('error');
-            console.log(response.status);
+            throw new Error(response.data.message);
           } else {
             this.advice = response.data.slip.advice;
           }

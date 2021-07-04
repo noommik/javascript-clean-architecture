@@ -24,14 +24,14 @@ export default defineComponent({
     fetchCat() {
       Cat.getCat()
         .then((response) => {
-          if (response.status === 400) {
-            console.log('error');
+          if (Object.prototype.hasOwnProperty.call(response.data, 'message')) {
+            throw new Error(response.data.message);
           } else if (response.status === 200) {
             this.thumbnail = response.data[0].url;
           }
         })
         .catch((error) => {
-          console.log('error');
+          console.log('error:', error);
         });
     },
   },
