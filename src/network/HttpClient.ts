@@ -1,12 +1,8 @@
 import axios from 'axios';
 
-/**
- * @Use: https://api.adviceslip.com/
- */
-const API_URL = 'https://api.adviceslip.com';
-
 const instance = axios.create({
-  baseURL: API_URL,
+  baseURL: '',
+  timeout: 1000,
 });
 
 instance.interceptors.request.use(
@@ -19,11 +15,4 @@ instance.interceptors.response.use(
   (error) => Promise.reject(error),
 );
 
-export default {
-  fetchData() {
-    return instance({
-      url: '/advice',
-      method: 'get',
-    });
-  },
-};
+export default instance;

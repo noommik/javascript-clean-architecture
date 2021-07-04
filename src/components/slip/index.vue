@@ -10,9 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
 // api
-import Slip from '@/api/slip';
+import Slip from '@/network/api/slip.ts';
 
 export default defineComponent({
   name: 'slip',
@@ -23,9 +22,10 @@ export default defineComponent({
   },
   methods: {
     fetchCat() {
-      Slip.fetchData()
+      Slip.getSlip()
         .then((response) => {
           if (Object.prototype.hasOwnProperty.call(response.data, 'message')) {
+            console.log('error');
             console.log(response.status);
           } else {
             this.advice = response.data.slip.advice;

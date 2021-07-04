@@ -10,9 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
 // api
-import Cat from '@/api/cat';
+import Cat from '@/network/api/cat.ts';
 
 export default defineComponent({
   name: 'cat',
@@ -23,16 +22,16 @@ export default defineComponent({
   },
   methods: {
     fetchCat() {
-      Cat.fetchData()
+      Cat.getCat()
         .then((response) => {
           if (response.status === 400) {
-            console.log(response.status);
+            console.log('error');
           } else if (response.status === 200) {
             this.thumbnail = response.data[0].url;
           }
         })
         .catch((error) => {
-          console.log(error);
+          console.log('error');
         });
     },
   },
