@@ -12,12 +12,14 @@
 import { defineComponent } from 'vue';
 // api
 import Cat from '@/network/api/cat.ts';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'cat',
   data() {
     return {
       thumbnail: '',
+      store: useStore(),
     };
   },
   methods: {
@@ -27,6 +29,7 @@ export default defineComponent({
           if (Object.prototype.hasOwnProperty.call(response.data, 'message')) {
             throw new Error(response.data.message);
           } else if (response.status === 200) {
+            this.store.commit('setCatData', response.data[0]);
             this.thumbnail = response.data[0].url;
           }
         })

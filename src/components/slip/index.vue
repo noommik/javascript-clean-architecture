@@ -12,12 +12,14 @@
 import { defineComponent } from 'vue';
 // api
 import Slip from '@/network/api/slip.ts';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'slip',
   data() {
     return {
       advice: '',
+      store: useStore(),
     };
   },
   methods: {
@@ -27,6 +29,7 @@ export default defineComponent({
           if (Object.prototype.hasOwnProperty.call(response.data, 'message')) {
             throw new Error(response.data.message);
           } else {
+            this.store.commit('setSlipData', response.data.slip);
             this.advice = response.data.slip.advice;
           }
         })
