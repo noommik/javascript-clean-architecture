@@ -2,9 +2,6 @@
   <section class="cat">
     <button type="button" @click="fetchCat()">고양이 이미지 불러오기</button>
     <br><br>
-    <div class="cat-thumbnail">
-      <img :src="thumbnail"  alt=""/>
-    </div>
   </section>
 </template>
 
@@ -18,7 +15,6 @@ export default defineComponent({
   name: 'cat',
   data() {
     return {
-      thumbnail: '',
       store: useStore(),
     };
   },
@@ -30,7 +26,6 @@ export default defineComponent({
             throw new Error(response.data.message);
           } else if (response.status === 200) {
             this.store.commit('setCatData', response.data[0]);
-            this.thumbnail = response.data[0].url;
           }
         })
         .catch((error) => {

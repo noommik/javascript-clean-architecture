@@ -1,10 +1,7 @@
 <template>
   <section class="slip">
-    <button type="button" @click="fetchCat()">명언 불러오기</button>
+    <button type="button" @click="fetchSlip()">명언 불러오기</button>
     <br><br>
-    <div class="slip-text">
-      <h3 v-text="advice"></h3>
-    </div>
   </section>
 </template>
 
@@ -18,19 +15,17 @@ export default defineComponent({
   name: 'slip',
   data() {
     return {
-      advice: '',
       store: useStore(),
     };
   },
   methods: {
-    fetchCat() {
+    fetchSlip() {
       Slip.getSlip()
         .then((response) => {
           if (Object.prototype.hasOwnProperty.call(response.data, 'message')) {
             throw new Error(response.data.message);
           } else {
             this.store.commit('setSlipData', response.data.slip);
-            this.advice = response.data.slip.advice;
           }
         })
         .catch((error) => {
