@@ -3,9 +3,14 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     url: '',
-    width: 0,
-    height: 0,
+    width: 300,
+    height: 300,
     advice: '',
+  },
+  getters: {
+    getAllData(state) {
+      return state;
+    },
   },
   mutations: {
     setCatData(state, data) {
