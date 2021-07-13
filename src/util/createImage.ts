@@ -62,7 +62,3 @@ export function loadCanvas(element: string, dataURL: string, w: any, h: any, tex
 
   imageObj.src = dataURL;
 }
-
-export const ttt = (arg: any) => {
-  console.log(arg);
-};

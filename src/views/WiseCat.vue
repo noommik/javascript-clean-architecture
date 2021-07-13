@@ -22,7 +22,7 @@
 
 <script lang="ts">
 // Components
-import cat from '@/components/cat/index.vue';
+import cat from '@/containers/cat/index.vue';
 import slip from '@/components/slip/index.vue';
 import store from '@/store/index';
 import { loadCanvas } from '@/util/createImage.ts';
